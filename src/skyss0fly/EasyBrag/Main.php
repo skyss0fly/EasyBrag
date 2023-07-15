@@ -30,7 +30,7 @@ $this->saveDefaultConfig();
       if  ($cooldown < 0) {
       $sender->sendMessage("Please wait until your cooldown ends!");
       return false;
-      } else {
+      }   
 if ($item !== null) {
   $bc = "$player . $message . $item";
     $this->getServer()->broadcastMessage($bc);
@@ -42,4 +42,3 @@ if ($item !== null) {
       }  
     }
     }
-}
