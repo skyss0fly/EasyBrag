@@ -18,31 +18,35 @@ $this->saveDefaultConfig();
 public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
     switch ($command->getName()) {
             case "brag":
-    if(!$sender instanceof Player){
+  if  (!$sender instanceof Player) {
   $sender->sendMessage("Error, must be in game");
     return false;
-    }
-      $cooldown = $this->getConfig()->get("Cooldown");
-      if ($cooldown < 0) {
+  }
+
+
+      
+     $cooldown = $this->getConfig()->get("Cooldown");
+    if  ($cooldown < 0) {
       $sender->sendMessage("Please wait until your cooldown ends!");
       return false;
-}
-      else {   
+    } else {
+        
             $player = $this->getServer()->getPlayerByPrefix($sender);
     $item = $player->getInventory()->getItemInHand();
-        if ($item !== null) {
+     if ($item !== null) {
           $message =  $this->getConfig()->get("Message");
           $player = $this->getServer()->getPlayerByPrefix($sender);
     $bc = "$player . $message . $item";
     $this->getServer()->broadcastMessage($bc);
       return true;
-} else {
+     }else{
+
+      
 $sender->sendMessage("Error you dont have anything in your hand");          
           return false;
-}
-      } 
-}
+    }
   return true;
-}
-  
-}
+    }
+    }
+}   
+    }
