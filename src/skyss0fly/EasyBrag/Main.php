@@ -33,6 +33,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
                 if ($item !== null) {
                     $bc = "$player . $message . $item";
                     $this->getServer()->broadcastMessage($bc);
+                  $cooldown = $cooldown
                     return false;
                 }
             
