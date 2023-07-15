@@ -21,19 +21,19 @@ class Main extends PluginBase implements Listener {
             case "brag":
                 $cooldown = $this->getConfig()->get("Cooldown");
                 $message = $this->getConfig()->get("Message");
-                $prefix = $this->getConfig()->get("Prefix");
+                $prefix = $this->getConfig()->get("§l§e[§5Easy§gBrag§e]§d");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
 
                 if (!$sender instanceof Player) {
-                    $sender->sendMessage("Error, must be in game");
+                    $sender->sendMessage("§cError, must be in game");
                     return false;
                 }
 
                 $currentTime = time();
                 if (isset($this->cooldowns[$player->getName()]) && $this->cooldowns[$player->getName()] > $currentTime) {
                     $remainingTime = $this->cooldowns[$player->getName()] - $currentTime;
-                    $sender->sendMessage("Error: still in timeout. Remaining time: " . $remainingTime . " seconds.");
+                    $sender->sendMessage("§cError: still in timeout. Remaining time: " . $remainingTime . " seconds.");
                     return false;
                 }
 
