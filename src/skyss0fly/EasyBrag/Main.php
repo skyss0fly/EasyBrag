@@ -21,6 +21,7 @@ class Main extends PluginBase implements Listener {
             case "brag":
                 $cooldown = $this->getConfig()->get("Cooldown");
                 $message = $this->getConfig()->get("Message");
+                $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
 
@@ -37,7 +38,7 @@ class Main extends PluginBase implements Listener {
                 }
 
                 if ($item !== null) {
-                    $bc = $player->getName() . $message . $item->getName();
+                    $bc = $prefix . $player->getName() . $message . $item->getName();
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
