@@ -10,39 +10,40 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\inventory\PlayerInventory;
 
 class Main extends PluginBase implements Listener {
+    private $cooldowns = [];
 
-  
-public function onLoad(): void {
-$this->saveDefaultConfig();
-}
-
-public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
-    switch ($command->getName()) {
-        case "brag":
-            $cooldown = $this->getConfig()->get("Cooldown");
-            $message = $this->getConfig()->get("Message");
-           $player = $this->getServer()->getPlayerExact($sender->getName());
-            $item = $player->getInventory()->getItemInHand();
-
-            if (!$sender instanceof Player) {
-                $sender->sendMessage("Error, must be in game");
-                return false;
-            }
-
-            while ($cooldown === 0) {
-                if ($item !== null) {
-                    $bc = "$player . $message . $item";
-                    $this->getServer()->broadcastMessage($bc);
-                    return false;
-                  
-                }
-            
-            } while ($cooldown < 0) {
-                $sender->sendMessage("Error: still in timeout");
-              return false;
-            }
+    public function onLoad(): void {
+        $this->saveDefaultConfig();
     }
-  return false;
-}
-}
 
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
+        switch ($command->getName()) {
+            case "brag":
+                $cooldown = $this->getConfig()->get("Cooldown");
+                $message = $this->getConfig()->get("Message");
+                $player = $this->getServer()->getPlayerExact($sender->getName());
+                $item = $player->getInventory()->getItemInHand();
+
+                if (!$sender instanceof Player) {
+                    $sender->sendMessage("Error, must be in game");
+                    return false;
+                }
+
+                $currentTime = time();
+                if (isset($this->cooldowns[$player->getName()]) && $this->cooldowns[$player->getName()] > $currentTime) {
+                    $remainingTime = $this->cooldowns[$player->getName()] - $currentTime;
+                    $sender->sendMessage("Error: still in timeout. Remaining time: " . $remainingTime . " seconds.");
+                    return false;
+                }
+
+                if ($item !== null) {
+                    $bc = $player . $message . $item;
+                    $this->getServer()->broadcastMessage($bc);
+                    $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
+                }
+                
+                return true;
+        }
+        return false;
+    }
+}
