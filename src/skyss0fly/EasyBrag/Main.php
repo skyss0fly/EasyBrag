@@ -35,8 +35,10 @@ public function onCommand(CommandSender $sender, Command $command, string $label
                     $this->getServer()->broadcastMessage($bc);
                     return false;
                 }
+              return true;
             } else {
                 $sender->sendMessage("Error: still in timeout");
+              return false;
             }
     }
 }
