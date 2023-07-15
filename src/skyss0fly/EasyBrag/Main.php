@@ -21,7 +21,7 @@ class Main extends PluginBase implements Listener {
             case "brag":
                 $cooldown = $this->getConfig()->get("Cooldown");
                 $message = $this->getConfig()->get("Message");
-                $prefix = $this->getConfig()->get("§l§e[§5Easy§gBrag§e]§d");
+                $prefix = "§l§e[§5Easy§gBrag§e]§d ";
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
 
