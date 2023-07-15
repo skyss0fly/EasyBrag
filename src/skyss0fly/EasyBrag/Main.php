@@ -21,7 +21,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
         case "brag":
             $cooldown = $this->getConfig()->get("Cooldown");
             $message = $this->getConfig()->get("Message");
-            $player = $this->getServer()->getPlayerByPrefix($sender);
+           $player = $this->getServer()->getPlayer($sender->getName());
             $item = $player->getInventory()->getItemInHand();
 
             if (!$sender instanceof Player) {
