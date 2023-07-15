@@ -39,6 +39,8 @@ if ($item !== null) {
   $sender->sendMessage("Error you dont have anything in your hand");      
   return false;
       }
-      }  
+      
+      return true;
+    }  
     }
     }
