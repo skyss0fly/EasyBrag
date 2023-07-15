@@ -10,10 +10,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\inventory\PlayerInventory;
 
 class Main extends PluginBase implements Listener {
-  /** @var Config */
-    private $config;
-    $config = $this->getConfig();
 
+  
 public function onLoad(): void {
 $this->saveDefaultConfig();
   $config = $this->getConfig();
@@ -27,8 +25,8 @@ public function onCommand(CommandSender $sender, Command $command, string $label
   $sender->sendMessage("Error, must be in game");
       
     } 
-    $cooldown = $config->get("Cooldown");
-    $message = $config->get("Message");
+    $cooldown = $config = $this->getConfig->get("Cooldown");
+    $message = $config = $this->getConfig()->get("Message");
     $item = $sender->getItemInHand();
     $this->getServer()->broadcastMessage($sender , $message , $item);
       if ($cooldown < 0) {
