@@ -45,8 +45,9 @@ public function onCommand(CommandSender $sender, Command $command, string $label
 $sender->sendMessage("Error you dont have anything in your hand");          
           return false;
     }
-  return true;
+  
     }
+      return true;
     }
 }   
     }
