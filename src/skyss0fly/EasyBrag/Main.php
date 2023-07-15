@@ -29,14 +29,14 @@ public function onCommand(CommandSender $sender, Command $command, string $label
                 return false;
             }
 
-            while ($cooldown < 0) {
+            while ($cooldown === 0) {
                 if ($item !== null) {
                     $bc = "$player . $message . $item";
                     $this->getServer()->broadcastMessage($bc);
                     return false;
                 }
             
-            } else {
+            } while ($cooldown < 0) {
                 $sender->sendMessage("Error: still in timeout");
               return false;
             }
