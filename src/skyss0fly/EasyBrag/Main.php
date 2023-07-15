@@ -34,7 +34,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
                     $bc = "$player . $message . $item";
                     $this->getServer()->broadcastMessage($bc);
                     return false;
-                  cooldown->
+                  
                 }
             
             } while ($cooldown < 0) {
