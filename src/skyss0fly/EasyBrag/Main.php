@@ -10,8 +10,9 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\inventory\PlayerInventory;
 
 class Main extends PluginBase implements Listener {
-  /@var Config*/
-  private config;
+  /** @var Config */
+    private $config;
+
 
 public function onLoad(): void {
 $this->saveDefaultConfig();
