@@ -27,7 +27,8 @@ public function onCommand(CommandSender $sender, Command $command, string $label
       $sender->sendMessage("Please wait until your cooldown ends!");
       return false;
 }
-      else {    
+      else {   
+            $player = $this->getServer()->getPlayerByPrefix($sender);
     $item = $player->getInventory()->getItemInHand();
         if ($item !== null) {
           $message =  $this->getConfig()->get("Message");
