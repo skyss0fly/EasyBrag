@@ -32,11 +32,7 @@ $bc = "$player . $message . $item";
           $this->getServer()->broadcastMessage($bc);
       return false;
         }
-        else {
-$sender->sendMessage("Error: no item");
-return true;
-        }
-      }
+        }  
       else{
 $sender->sendMessage("Error: still in timeout");
         return false;
