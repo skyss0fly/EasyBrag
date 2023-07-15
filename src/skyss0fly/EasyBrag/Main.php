@@ -23,7 +23,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
     
     } 
     $player = $this->getServer()->getPlayerByPrefix($sender);  
-    $cooldown = $this->getConfig->get("Cooldown");
+    $cooldown = $this->getConfig()->get("Cooldown");
     $message =  $this->getConfig()->get("Message");
     $item = $player->getItemInHand();
     $this->getServer()->broadcastMessage($sender , $message , $item);
