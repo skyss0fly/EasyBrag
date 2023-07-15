@@ -20,7 +20,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
             case "brag":
     if(!$sender instanceof Player){
   $sender->sendMessage("Error, must be in game");
-    
+    return false;
     } 
     $player = $this->getServer()->getPlayerByPrefix($sender);  
     $cooldown = $this->getConfig()->get("Cooldown");
