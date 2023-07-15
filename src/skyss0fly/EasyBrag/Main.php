@@ -36,7 +36,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
     $this->getServer()->broadcastMessage($bc);
       return true;
       } 
-      return true;
 }
+  return true;
 }
 }
