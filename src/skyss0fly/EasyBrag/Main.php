@@ -15,32 +15,32 @@ class Main extends PluginBase implements Listener {
 public function onLoad(): void {
 $this->saveDefaultConfig();
 }
-  
-  public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
     switch ($command->getName()) {
             case "brag":
-       $cooldown = $this->getConfig()->get("Cooldown");
+      $cooldown = $this->getConfig()->get("Cooldown");
       $message =  $this->getConfig()->get("Message");
-          $player = $this->getServer()->getPlayerByPrefix($sender);
+      $player = $this->getServer()->getPlayerByPrefix($sender);
       $item = $player->getInventory()->getItemInHand();
-  if  (!$sender instanceof Player) {
+  if (!$sender instanceof Player) {
   $sender->sendMessage("Error, must be in game");
     return false;
   }
-      if  ($cooldown < 0) {
-      $sender->sendMessage("Please wait until your cooldown ends!");
+      if( $cooldown < 0){
+        if($item !== null){
+$bc = "$player . $message . $item";
+          $this->getServer()->broadcastMessage($bc);
       return false;
-      }   
-if ($item !== null) {
-  $bc = "$player . $message . $item";
-    $this->getServer()->broadcastMessage($bc);
-  return true;
-} else {
-  $sender->sendMessage("Error you dont have anything in your hand");      
-  return false;
+        }
+        else {
+$sender->sendMessage("Error: no item");
+return true;
+        }
       }
-      
-      return true;
-    }  
+      else{
+$sender->sendMessage("Error: still in timeout");
+      }
     }
     }
+}
+
