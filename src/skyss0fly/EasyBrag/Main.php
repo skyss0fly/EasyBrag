@@ -16,7 +16,7 @@ public function onLoad(): void {
 $this->saveDefaultConfig();
 }
 public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
-  switch ($command->getName()) {
+    switch ($command->getName()) {
             case "brag":
     if(!$sender instanceof Player){
   $sender->sendMessage("Error, must be in game");
