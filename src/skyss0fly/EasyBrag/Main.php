@@ -32,7 +32,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
     $item = $sender->getItemInHand();
     $this->getServer()->broadcastMessage($sender , $message , $item);
     sleep($cooldown)
-      if (sleep($cooldown) < 0) {
+      while (sleep($cooldown) < 0) {
       $sender->sendMessage("Please wait until your cooldown ends!");
       return true;
 }
