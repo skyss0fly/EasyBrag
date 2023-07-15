@@ -12,7 +12,7 @@ use pocketmine\inventory\PlayerInventory;
 class Main extends PluginBase implements Listener {
   /** @var Config */
     private $config;
-
+    $config = $this->getConfig();
 
 public function onLoad(): void {
 $this->saveDefaultConfig();
