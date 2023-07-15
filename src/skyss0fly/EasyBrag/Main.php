@@ -22,9 +22,9 @@ public function onCommand(CommandSender $sender, Command $command, string $label
   $sender->sendMessage("Error, must be in game");
     
     } 
-    $player = $this->getServer()->getPlayer();  
-    $cooldown = $config = $this->getConfig->get("Cooldown");
-    $message = $config = $this->getConfig()->get("Message");
+    $player = $this->getServer()->getPlayerByPrefix($sender);  
+    $cooldown = $this->getConfig->get("Cooldown");
+    $message =  $this->getConfig()->get("Message");
     $item = $player->getItemInHand();
     $this->getServer()->broadcastMessage($sender , $message , $item);
       if ($cooldown < 0) {
