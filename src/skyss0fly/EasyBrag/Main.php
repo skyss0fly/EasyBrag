@@ -37,7 +37,7 @@ class Main extends PluginBase implements Listener {
                 }
 
                 if ($item !== null) {
-                    $bc = $player->getName() . $message . $item->getCustomName();
+                    $bc = $player->getName() . $message . $item->getName();
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
