@@ -1,2 +1,4 @@
 Message: "has got a "
 Prefix: "[EasyBrag] "
+Cooldown: 60
+# in seconds not ticks
