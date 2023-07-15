@@ -27,16 +27,21 @@ public function onCommand(CommandSender $sender, Command $command, string $label
       $sender->sendMessage("Please wait until your cooldown ends!");
       return false;
 }
-      else { 
-    $player = $this->getServer()->getPlayerByPrefix($sender);  
-    $cooldown = $this->getConfig()->get("Cooldown");
-    $message =  $this->getConfig()->get("Message");
+      else {    
     $item = $player->getInventory()->getItemInHand();
+        if ($item !== null) {
+          $message =  $this->getConfig()->get("Message");
+          $player = $this->getServer()->getPlayerByPrefix($sender);
     $bc = "$player . $message . $item";
     $this->getServer()->broadcastMessage($bc);
       return true;
+} else {
+$sender->sendMessage("Error you dont have anything in your hand");          
+          return false;
+}
       } 
 }
   return true;
 }
+  
 }
