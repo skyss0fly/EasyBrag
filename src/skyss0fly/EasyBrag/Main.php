@@ -21,7 +21,12 @@ public function onCommand(CommandSender $sender, Command $command, string $label
     if(!$sender instanceof Player){
   $sender->sendMessage("Error, must be in game");
     return false;
-    } else { 
+    }
+      if ($cooldown < 0) {
+      $sender->sendMessage("Please wait until your cooldown ends!");
+      return false;
+}
+      else { 
     $player = $this->getServer()->getPlayerByPrefix($sender);  
     $cooldown = $this->getConfig()->get("Cooldown");
     $message =  $this->getConfig()->get("Message");
@@ -29,12 +34,7 @@ public function onCommand(CommandSender $sender, Command $command, string $label
     $bc = "$player . $message . $item";
     $this->getServer()->broadcastMessage($bc);
       return true;
-    }
-      if ($cooldown < 0) {
-      $sender->sendMessage("Please wait until your cooldown ends!");
-      return false;
-}
-    return true;
+      }     
 }
 }
 }
