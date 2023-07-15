@@ -14,25 +14,24 @@ class Main extends PluginBase implements Listener {
   
 public function onLoad(): void {
 $this->saveDefaultConfig();
-  $config = $this->getConfig();
-  
-
 }
 public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
   switch ($command->getName()) {
             case "brag":
     if(!$sender instanceof Player){
   $sender->sendMessage("Error, must be in game");
-      
+    
     } 
+    $player = $this->getServer()->getPlayer();  
     $cooldown = $config = $this->getConfig->get("Cooldown");
     $message = $config = $this->getConfig()->get("Message");
-    $item = $sender->getItemInHand();
+    $item = $player->getItemInHand();
     $this->getServer()->broadcastMessage($sender , $message , $item);
       if ($cooldown < 0) {
       $sender->sendMessage("Please wait until your cooldown ends!");
-      return true;
+      return false;
 }
+    return true;
 }
 }
 }
