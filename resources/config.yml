@@ -1,3 +1,5 @@
 # todo: fix prefix and message customisation
 Cooldown: 60
 # in seconds not ticks
+
+DisableBragView: true
