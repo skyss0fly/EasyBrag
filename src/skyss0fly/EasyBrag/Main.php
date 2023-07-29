@@ -8,7 +8,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\inventory\PlayerInventory;
-
+use pocketmine\item\enchantment\VanillaEnchantments;
 class Main extends PluginBase implements Listener {
     private $cooldowns = [];
 
