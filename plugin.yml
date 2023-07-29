@@ -7,6 +7,8 @@ description: A simple bragging plugin
 permissions:
   EasyBrag.use:
     default: true
+  EasyBrag.itemview:
+    default: true
 commands:
   brag:
     description: use this to brag your item
