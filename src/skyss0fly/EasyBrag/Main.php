@@ -42,10 +42,7 @@ class Main extends PluginBase implements Listener {
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
-                if is_null($item) {
-                    $sender->sendMessage($prefix . " Error: No Item");
-                return false;
-                }
+                
                 return true;
             case "itembrag":
             $cooldown = $this->getConfig()->get("Cooldown");
@@ -70,10 +67,7 @@ class Main extends PluginBase implements Listener {
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
-                if is_null($item) {
-                    $sender->sendMessage($prefix . " Error: No Item");
-                return false;
-                }
+                
                 return true;
             case "bragsee":
             $prefix = $this->getConfig()->get("Prefix");
