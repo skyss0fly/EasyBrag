@@ -15,7 +15,6 @@ class Main extends PluginBase implements Listener {
     public function onLoad(): void {
         $this->saveDefaultConfig();
     }
-
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
         switch ($command->getName()) {
             case "brag":
@@ -24,7 +23,7 @@ class Main extends PluginBase implements Listener {
                 $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
-
+$enchants = $item->getEnchantments()
                 if (!$sender instanceof Player) {
                     $sender->sendMessage($prefix . "§cError, must be in game");
                     return false;
@@ -38,7 +37,7 @@ class Main extends PluginBase implements Listener {
                 }
 
                 if ($item !== null) { 
-                    $bc = $prefix . $player->getName() . " has got: §r" . $item->getName();
+                    $bc = $prefix . $player->getName() . " has got: §r" . $item->getName() . " With the following Enchants: " $enchants->getType()->getName();
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
