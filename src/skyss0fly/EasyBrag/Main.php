@@ -23,7 +23,11 @@ class Main extends PluginBase implements Listener {
                 $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
-$enchants = $item->getEnchantments()
+//* $enchants = $item->getEnchantments()
+           // brag message: with the following Enchants: " $enchants->getType()->getName();"
+        
+
+
                 if (!$sender instanceof Player) {
                     $sender->sendMessage($prefix . "§cError, must be in game");
                     return false;
@@ -37,7 +41,7 @@ $enchants = $item->getEnchantments()
                 }
 
                 if ($item !== null) { 
-                    $bc = $prefix . $player->getName() . " has got: §r" . $item->getName() . " With the following Enchants: " $enchants->getType()->getName();
+                    $bc = $prefix . $player->getName() . " has got: §r" . $item->getName() 
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
