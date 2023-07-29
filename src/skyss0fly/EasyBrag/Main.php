@@ -20,7 +20,7 @@ class Main extends PluginBase implements Listener {
         switch ($command->getName()) {
             case "brag":
                 $cooldown = $this->getConfig()->get("Cooldown");
-                $message = $this->getConfig()->get("Message");
+                
                 $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
@@ -42,11 +42,13 @@ class Main extends PluginBase implements Listener {
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
-                
+                if ($item === null) { 
+                    $sender->sendMessage($prefix . " Error: No Item");
+                return false;
+                }
                 return true;
             case "itembrag":
             $cooldown = $this->getConfig()->get("Cooldown");
-                $message = $this->getConfig()->get("Message");
                 $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
@@ -68,11 +70,17 @@ class Main extends PluginBase implements Listener {
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
-                
+                if ($item === null) { 
+                    $sender->sendMessage($prefix . " Error: No Item");
+                return false;
+                }
                 return true;
             case "bragsee":
-            $disabled = $this->getConfig()->get("DisableBragView");
-            $disabledmessage = "Unfortunately your admins Have Disabled this Command or you have no perms:("
+            $cooldown = $this->getConfig()->get("DisableBragView");
+                $disabled = $this->getConfig()->get("Prefix");
+                $player = $this->getServer()->getPlayerExact($sender->getName());
+
+            $disabledmessage = $prefix . "Unfortunately your admins Have Disabled this Command or you have no perms:("
             if ($disabled) {
             $sender->sendMessage($disabledmessage);
                 return false;
