@@ -12,11 +12,11 @@ commands:
     description: use this to brag your item
     permission: EasyBrag.use
     default: true
- ItemBrag:
+ itembrag:
     description: use this to brag your item
     permission: EasyBrag.use
     default: true
-  ItemView:
+  itemview:
     description: use this to view an item that has been bragged
     permission: EasyBrag.itemview
     default: true
