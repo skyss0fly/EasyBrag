@@ -73,11 +73,13 @@ class Main extends PluginBase implements Listener {
             case "bragsee":
             $disabled = $this->getConfig()->get("DisableBragView");
             $disabledmessage = "Unfortunately your admins Have Disabled this Command or you have no perms:("
-            if ($disabled){
+            if ($disabled) {
             $sender->sendMessage($disabledmessage);
+                return false;
         }
             else {
 $sender->sendMessage("Coming Soon:)");
+                return false;
             }
         }
         
