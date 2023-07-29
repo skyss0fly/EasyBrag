@@ -10,15 +10,15 @@ permissions:
   EasyBrag.itemview:
     default: true
 commands:
-  brag:
+   brag:
     description: use this to brag your item
     permission: EasyBrag.use
     default: true
- itembrag:
+   itembrag:
     description: use this to brag your item
     permission: EasyBrag.use
     default: true
-  itemview:
+   itemview:
     description: use this to view an item that has been bragged
     permission: EasyBrag.itemview
     default: true
