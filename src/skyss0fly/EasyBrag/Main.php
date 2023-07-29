@@ -42,7 +42,7 @@ class Main extends PluginBase implements Listener {
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
-                if ($item === null) { 
+                else {
                     $sender->sendMessage($prefix . " Error: No Item");
                 return false;
                 }
@@ -70,7 +70,7 @@ class Main extends PluginBase implements Listener {
                     $this->getServer()->broadcastMessage($bc);
                     $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
                 }
-                if ($item === null) { 
+                else{
                     $sender->sendMessage($prefix . " Error: No Item");
                 return false;
                 }
