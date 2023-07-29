@@ -77,14 +77,13 @@ class Main extends PluginBase implements Listener {
                 return true;
             case "bragsee":
             $cooldown = $this->getConfig()->get("DisableBragView");
-                $disabled = $this->getConfig()->get("Prefix");
-                $player = $this->getServer()->getPlayerExact($sender->getName());
-
-            $disabledmessage = $prefix . "Unfortunately your admins Have Disabled this Command or you have no perms:("
-            if ($disabled) {
-            $sender->sendMessage($disabledmessage);
-                return false;
-        }
+         $disabled = $this->getConfig()->get("Prefix");
+$player = $this->getServer()->getPlayerExact($sender->getName());
+$disabledmessage = $prefix . "Unfortunately your admins Have Disabled this Command or you have no perms:(";
+if ($disabled) {
+    $sender->sendMessage($disabledmessage);
+    return false;
+}
             else {
 $sender->sendMessage("Coming Soon:)");
                 return false;
