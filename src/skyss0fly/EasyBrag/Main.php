@@ -8,7 +8,6 @@ use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\inventory\PlayerInventory;
-use pocketmine\item\enchantment\VanillaEnchantments;
 class Main extends PluginBase implements Listener {
     private $cooldowns = [];
 
@@ -23,11 +22,7 @@ class Main extends PluginBase implements Listener {
                 $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
-//* $enchants = $item->getEnchantments()
-           // brag message: with the following Enchants: " $enchants->getType()->getName();"
-        
-
-
+   
                 if (!$sender instanceof Player) {
                     $sender->sendMessage($prefix . "§cError, must be in game");
                     return false;
