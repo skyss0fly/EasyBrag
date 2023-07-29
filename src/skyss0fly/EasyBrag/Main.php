@@ -69,7 +69,7 @@ class Main extends PluginBase implements Listener {
                 }
                 
                 return true;
-            case "bragsee":
+            case "itemview":
             $prefix = $this->getConfig()->get("Prefix");
             $cooldown = $this->getConfig()->get("DisableBragView");
          $disabled = $this->getConfig()->get("Prefix");
