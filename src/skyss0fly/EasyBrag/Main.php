@@ -18,7 +18,17 @@ class Main extends PluginBase implements Listener {
         switch ($command->getName()) {
             case "brag":
                 $cooldown = $this->getConfig()->get("Cooldown");
-                
+                /*
+            
+		if($this->hasEnchantments()){
+			$ench = new ListTag();
+			foreach($this->getEnchantments() as $enchantmentInstance){
+				$ench->push(CompoundTag::create()
+					->setShort("id", EnchantmentIdMap::getInstance()->toId($enchantmentInstance->getType()))
+					->setShort("lvl", $enchantmentInstance->getLevel())
+				);
+
+                */
                 $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
