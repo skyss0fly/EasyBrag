@@ -1,7 +1,7 @@
-Prefix: '§l§d[§6Easy§gBrag§d]§r '
+Prefix: '&l&d[&6Easy&gBrag&d]&r'
 Cooldown: 60 # in seconds not ticks
 
-Message: '§c{player}§r §chas got §d{item}'
-MessageWithEnchants: '§c{player}§r §bhas got §d{item} §bwith §r{enchantments}'
-CooldownMessage: '§d/brag §bis on cooldown. Remaining time: §c{seconds} seconds'
-InvalidItemMessage: '§cYou must hold an item in hand to brag'
+Message: '&c{player}&r &chas got &d{item}'
+MessageWithEnchants: '&c{player}&r &bhas got &d{item} &bwith &r{enchantments}'
+CooldownMessage: '&d/brag &bis on cooldown. Remaining time: &c{seconds} seconds'
+InvalidItemMessage: '&cYou must hold an item in hand to brag'
