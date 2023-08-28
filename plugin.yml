@@ -1,15 +1,17 @@
 name: EasyBrag
 main: skyss0fly\EasyBrag\Main
-version: 1.1.0
+version: 1.2.0
 api: 5.0.0
-author: skyss0fly
+author: [skyss0fly, Levonzie]
 description: A simple bragging plugin
 permissions:
-  EasyBrag.use:
+  easybrag.use:
     default: true
+  easybrag.cooldown_bypass:
+    default: op
 commands:
   brag:
-    description: use this to brag your item
-    permission: EasyBrag.use
+    description: brag the item you have in your hand!
+    permission: easybrag.use
     default: true
   
