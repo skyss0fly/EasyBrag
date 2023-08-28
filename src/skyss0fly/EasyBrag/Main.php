@@ -10,6 +10,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\inventory\PlayerInventory;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\lang\Language;
+use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase implements Listener {
     private $cooldowns = [];
@@ -22,12 +23,12 @@ class Main extends PluginBase implements Listener {
 
     public function onLoad(): void {
         $this->saveDefaultConfig();
-        $this->prefix = trim($this->getConfig()->get("Prefix"));
+        $this->prefix = TextFormat::colorize(trim($this->getConfig()->get("Prefix")));
         $this->cooldown = $this->getConfig()->get("Cooldown");
-        $this->message = $this->getConfig()->get("Message");
-        $this->cooldown_message = $this->getConfig()->get("CooldownMessage");
-        $this->invalid_item_message = $this->getConfig()->get("InvalidItemMessage");
-        $this->message_enchants = $this->getConfig()->get("MessageWithEnchants");
+        $this->message = TextFormat::colorize($this->getConfig()->get("Message"));
+        $this->cooldown_message = TextFormat::colorize($this->getConfig()->get("CooldownMessage"));
+        $this->invalid_item_message = TextFormat::colorize($this->getConfig()->get("InvalidItemMessage"));
+        $this->message_enchants = TextFormat::colorize($this->getConfig()->get("MessageWithEnchants"));
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
@@ -53,7 +54,6 @@ class Main extends PluginBase implements Listener {
                 $player_displayname = $player->getDisplayName();
                 
                 if ($item !== null && $item_name != "Air") {
-                    
                     if ($item->hasEnchantments()) {
                         $bc = $this->prefix . " " . str_replace(array('{player}', '{user}', '{username}', '{name}'), $player_displayname, $this->message_enchants);
                         
