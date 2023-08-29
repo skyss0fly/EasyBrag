@@ -1,5 +1,0 @@
-# todo: fix prefix and message customisation
-Cooldown: 60
-# in seconds not ticks
-Prefix: §l§d[§6Easy§gBrag§d]
-DisableBragView: true
