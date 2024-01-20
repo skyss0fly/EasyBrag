@@ -88,7 +88,7 @@ if ($disabled === true) {
     return false;
 }
             else {
-$sender->sendMessage("Coming Soon:)");
+$sender->sendMessage(" Coming Soon:)");
                 return false;
             }
         }
