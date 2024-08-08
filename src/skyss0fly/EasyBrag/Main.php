@@ -112,7 +112,7 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
 
         
 case "bragadmin":
-     if ($player hasPermission("easybrag.administrator")) {
+     if ($player->hasPermission("easybrag.administrator")) {
 if ($this->status === true){
     $this->status = false;
     $sender->sendMessage($this->prefix . " " . $this->disable);
