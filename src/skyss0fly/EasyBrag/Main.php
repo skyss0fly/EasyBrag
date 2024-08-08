@@ -130,6 +130,10 @@ $sender->sendMessage($this->prefix . " " . $this->noperm);
         return false;
 }
 
+}
+}
+
+
 
 
 
