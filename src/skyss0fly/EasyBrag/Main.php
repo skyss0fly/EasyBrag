@@ -23,6 +23,13 @@ class Main extends PluginBase implements Listener {
 
     public function onLoad(): void {
         $this->saveDefaultConfig();
+        // New Update:
+        $this->disabled = TextFormat::colorize($this->getConfig()->get("Disabled"));
+        $this->noperm = TextFormat::colorize($this->getConfig()->get("NoPerm"));
+        $this->disable = TextFormat::colorize($this->getConfig()->get("DisableMessage")); 
+$this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
+
+            // New Update ^
         $this->prefix = TextFormat::colorize(trim($this->getConfig()->get("Prefix")));
         $this->cooldown = $this->getConfig()->get("Cooldown");
         $this->message = TextFormat::colorize($this->getConfig()->get("Message"));
@@ -90,4 +97,13 @@ class Main extends PluginBase implements Listener {
         }
         return false;
     }
+    case "disableserverbrag":
+     if ($player hasPermission("EasyBrag.disableserverbrag") {
+
+    }
+    else {
+
+}
+
+
 }
