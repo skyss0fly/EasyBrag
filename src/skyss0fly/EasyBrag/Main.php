@@ -99,11 +99,8 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                     $this->cooldowns[$player_name] = $currentTime + $this->cooldown;
                 } else {
                     $sender->sendMessage($this->prefix . " " . $this->invalid_item_message);
-                }
-                
-                return true;
-        
-        }
+                }  
+        } 
         else {
 $sender->sendMessage($this->prefix . " " . $this->disabled);
             
