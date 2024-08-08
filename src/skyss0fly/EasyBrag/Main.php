@@ -107,6 +107,8 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         }
         return false;
     }
+    return true;
+}
 
         
 case "disableserverbrag":
@@ -123,7 +125,7 @@ $sender->sendMessage($this->prefix . " " . $this->nnoperm);
 case "enableserverbrag":
     if ($player hasPermission("easybrag.administrator")) {
 $this->status = true;
-$sender->sendMessage($this->prefix . " " . $this->enable);
+$sender->sendMessage($this->prefix . " " . $this->enable); 
 return true;
 }
 else {
@@ -131,3 +133,6 @@ else {
     $sender->sendMessage($this->prefix . " " . $this->noperm);
     return false;
 
+}
+
+}
