@@ -19,3 +19,10 @@ A PocketMine-MP 5 plugin, which allows players to showcase their items in chat u
   - default: true
 - easybrag.cooldown_bypass — permission to bypass /brag cooldown
   - default: op
+ 
+## Credits;
+
+- [skyss0fly](https://github.com/skyss0fly)
+- [skyss0fly 2nd account](https://github.com/skyss0fly-pm-pl)
+- [Levonzie](https://github.com/Levonzie)
+
