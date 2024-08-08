@@ -102,7 +102,7 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 }
                 
                 return true;
-        }
+        
         }
         else {
 $sender->sendMessage($this->prefix . " " . $this->disabled);
