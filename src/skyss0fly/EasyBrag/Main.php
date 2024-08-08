@@ -125,12 +125,13 @@ $this->status = true;
     $sender->sendMessage($this->prefix . " " . $this->enable);
 
 }
+}
     else {
 $sender->sendMessage($this->prefix . " " . $this->noperm);
         return false;
 }
 
-}
+
 }
 
 
