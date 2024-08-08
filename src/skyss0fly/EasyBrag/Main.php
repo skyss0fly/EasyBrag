@@ -20,6 +20,12 @@ class Main extends PluginBase implements Listener {
     private $cooldown_message;
     private $invalid_item_message;
     private $message_enchants;
+    private $disabled;
+    private $disable;
+    private $enable;
+    private $noperm;
+    private $status;
+    
 
     public function onLoad(): void {
         $this->saveDefaultConfig();
@@ -28,6 +34,7 @@ class Main extends PluginBase implements Listener {
         $this->noperm = TextFormat::colorize($this->getConfig()->get("NoPerm"));
         $this->disable = TextFormat::colorize($this->getConfig()->get("DisableMessage")); 
 $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
+        $this->status = $this->getConfig()->get("Status");
 
             // New Update ^
         $this->prefix = TextFormat::colorize(trim($this->getConfig()->get("Prefix")));
@@ -41,6 +48,7 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
         switch ($command->getName()) {
             case "brag":
+            if ($status === true) {
                 if (!$sender instanceof Player) {
                     $sender->sendMessage("§cError, must be in game");
                     return false;
@@ -95,15 +103,32 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 
                 return true;
         }
+        }
+        else {
+$sender->sendMessage($this->prefix . " " . $this->disabled);
+            
+        }
         return false;
     }
     case "disableserverbrag":
-     if ($player hasPermission("EasyBrag.disableserverbrag") {
-
+     if ($player hasPermission("EasyBrag.Administrator")) {
+$this->status = false;
+    $sender->sendMessage($this->prefix . " " . $this->disable);
+return true;
     }
     else {
-
+$sender->sendMessage($this->prefix . " " . $this->nnoperm);
+        return false;
 }
 
-
+case "enableserverbrag":
+    if ($player hasPermission("EasyBrag.Administrator")) {
+$this->status = true;
+$sender->sendMessage($this->prefix . " " . $this->enable);
+return true;
 }
+else {
+
+    $sender->sendMessage($this->prefix . " " . $this->noperm);
+    return false;
+
