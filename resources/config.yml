@@ -9,3 +9,6 @@ NoPerm: '&cSorry, you dont got the Permissions to use this'
 Disabled: '&cError: An Admin has disabled this command'
 Disable: '&Disabled Brag'
 Enable: '&aEnabled Brag'
+
+# Status = true. if false. brag is disabled
+Status: true
