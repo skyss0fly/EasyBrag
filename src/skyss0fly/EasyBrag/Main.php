@@ -111,28 +111,21 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
 }
 
         
-case "disableserverbrag":
+case "bragadmin":
      if ($player hasPermission("easybrag.administrator")) {
-$this->status = false;
+if ($this->status === false){
+    
     $sender->sendMessage($this->prefix . " " . $this->disable);
+
 return true;
+// e
     }
     else {
 $sender->sendMessage($this->prefix . " " . $this->nnoperm);
         return false;
 }
 
-case "enableserverbrag":
-    if ($player hasPermission("easybrag.administrator")) {
-$this->status = true;
-$sender->sendMessage($this->prefix . " " . $this->enable); 
-return true;
-}
-else {
 
-    $sender->sendMessage($this->prefix . " " . $this->noperm);
-    return false;
 
-}
 
 }
