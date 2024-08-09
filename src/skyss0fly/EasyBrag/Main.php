@@ -48,7 +48,7 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
         switch ($command->getName()) {
             case "brag":
-            if ($status === true) {
+            if ($this->status === true) {
                 if (!$sender instanceof Player) {
                     $sender->sendMessage("§cError, must be in game");
                     return false;
@@ -125,5 +125,7 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
     }
     return false; // This return statement is redundant but can be kept for clarity
         }
+        return false;
+        
     }
 }
