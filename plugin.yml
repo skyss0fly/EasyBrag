@@ -16,14 +16,11 @@ commands:
     description: brag the item you have in your hand!
     permission: easybrag.use
     default: true
-  disablebrag:
-    description: disable brag
+  bragadmin:
+    description: disable/enable brag
     permission: easybrag.administrator
     default: false
-  enablebrag:
-    description: enable brag
-    permission: easybrag.administrator
-    default: false
+  
     
 
   
