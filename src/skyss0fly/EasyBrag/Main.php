@@ -107,35 +107,25 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         }
         return false;
     }
-    return true;
-}
-
-        
+  
 case "bragadmin":
-     if ($player->hasPermission("easybrag.administrator")) {
-if ($this->status === true){
+ if ($player->hasPermission("easybrag.administrator")) {
+  if ($this->status === true){
     $this->status = false;
     $sender->sendMessage($this->prefix . " " . $this->disable);
-
-return true;
-
-    }
-else {
-$this->status = true;
+    return true;
+   }
+   else {
+    $this->status = true;
     $sender->sendMessage($this->prefix . " " . $this->enable);
-
-}
-}
-    else {
+  }
+else {
 $sender->sendMessage($this->prefix . " " . $this->noperm);
         return false;
 }
-
-
+}
 }
 
-
-
-
+}
 
 
