@@ -105,8 +105,7 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
 $sender->sendMessage($this->prefix . " " . $this->disabled);
             
         }
-        return false;
-    }
+    
   case "bragadmin":
    if ($player->hasPermission("easybrag.administrator")) {
     if ($this->status === true){
@@ -122,7 +121,9 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
     $sender->sendMessage($this->prefix . " " . $this->noperm);
     return false;
    }
-}
+        }
+        return false;
+    }
 }
 
 }
