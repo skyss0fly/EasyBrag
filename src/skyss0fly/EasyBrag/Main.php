@@ -123,7 +123,7 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         $sender->sendMessage($this->prefix . " " . $this->noperm);
         return false;
     }
-    return false; // This return statement is redundant but can be kept for clarity
+    
         }
         return false;
         
