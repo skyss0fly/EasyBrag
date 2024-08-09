@@ -1,5 +1,7 @@
 # EasyBrag
 A PocketMine-MP 5 plugin, which allows players to showcase their items in chat using /brag command.
+ # Whats New?
+ **Server Admins can now disable And Enable brag**
 
 ## Features
 - Provides enchantment list
