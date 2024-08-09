@@ -107,25 +107,21 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         }
     
   case "bragadmin":
-   if ($player->hasPermission("easybrag.administrator")) {
-    if ($this->status === true){
-      $this->status = false;
-      $sender->sendMessage($this->prefix . " " . $this->disable);
-      return true;
-    }
-    else {
-     $this->status = true;
-     $sender->sendMessage($this->prefix . " " . $this->enable);
-    }
-   else {
-    $sender->sendMessage($this->prefix . " " . $this->noperm);
-    return false;
-   }
+    if ($player->hasPermission("easybrag.administrator")) {
+        if ($this->status === true) {
+            $this->status = false;
+            $sender->sendMessage($this->prefix . " " . $this->disable);
+            return true;
+        } else {
+            $this->status = true;
+            $sender->sendMessage($this->prefix . " " . $this->eppable);
+            return true;
         }
- 
+    } else {
+        $sender->sendMessage($this->prefix . " " . $this->noperm);
+        return false;
+    }
+    return false; // This return statement is redundant but can be kept for clarity
+        }
     }
 }
-
-}
-
-
