@@ -15,12 +15,14 @@ A PocketMine-MP 5 plugin, which allows players to showcase their items in chat u
 
 ## Commands
 - /brag — brag the item you have in your hand!
-
+- bragadmin - Disable/enable brag.
 ## Permissions
 - easybrag.use — permission to use /brag
   - default: true
 - easybrag.cooldown_bypass — permission to bypass /brag cooldown
   - default: op
+- easybrag.administrator - permission to disable / enable brag
+   - default: false
  
 ## Credits;
 
