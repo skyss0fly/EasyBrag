@@ -107,6 +107,8 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         }
     
   case "bragadmin":
+            $player = $this->getServer()->getPlayerExact($sender->getName());
+            
     if ($player->hasPermission("easybrag.administrator")) {
         if ($this->status === true) {
             $this->status = false;
@@ -114,7 +116,7 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
             return true;
         } else {
             $this->status = true;
-            $sender->sendMessage($this->prefix . " " . $this->eppable);
+            $sender->sendMessage($this->prefix . " " . $this->enable);
             return true;
         }
     } else {
