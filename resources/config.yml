@@ -1,5 +1,16 @@
-# todo: fix prefix and message customisation
-Cooldown: 60
-# in seconds not ticks
-Prefix: §l§d[§6Easy§gBrag§d]
-DisableBragView: true
+
+Prefix: '&l&d[&6Easy&gBrag&d]&r'
+Cooldown: 60 # in seconds not ticks
+
+Message: '&c{player}&r &chas got &d{item}'
+MessageWithEnchants: '&c{player}&r &bhas got &d{item} &bwith &r{enchantments}'
+CooldownMessage: '&d/brag &bis on cooldown. Remaining time: &c{seconds} seconds'
+InvalidItemMessage: '&cYou must hold an item in hand to brag'
+NoPerm: '&cSorry, you dont got the Permissions to use this'
+Disabled: '&cError: An Admin has disabled this command'
+Disable: '&Disabled Brag'
+Enable: '&aEnabled Brag'
+
+# Status = true. if false. brag is disabled
+Status: true
+
