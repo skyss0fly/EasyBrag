@@ -7,6 +7,7 @@ description: A simple bragging plugin
 permissions:
   easybrag.use:
     default: true
+
   easybrag.cooldown_bypass:
     default: op
   easybrag.administrator:
@@ -22,5 +23,6 @@ commands:
     default: false
   
     
+
 
   

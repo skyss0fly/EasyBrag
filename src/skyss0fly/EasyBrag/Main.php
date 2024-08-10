@@ -44,13 +44,56 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
         $this->invalid_item_message = TextFormat::colorize($this->getConfig()->get("InvalidItemMessage"));
         $this->message_enchants = TextFormat::colorize($this->getConfig()->get("MessageWithEnchants"));
     }
-
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
         switch ($command->getName()) {
             case "brag":
+
             if ($this->status === true) {
+
+                $cooldown = $this->getConfig()->get("Cooldown");
+                /*
+            
+		if($this->hasEnchantments()){
+			$ench = new ListTag();
+			foreach($this->getEnchantments() as $enchantmentInstance){
+				$ench->push(CompoundTag::create()
+					->setShort("id", EnchantmentIdMap::getInstance()->toId($enchantmentInstance->getType()))
+					->setShort("lvl", $enchantmentInstance->getLevel())
+				);
+
+                */
+                $prefix = $this->getConfig()->get("Prefix");
+                $player = $this->getServer()->getPlayerExact($sender->getName());
+                $item = $player->getInventory()->getItemInHand();
+   
                 if (!$sender instanceof Player) {
-                    $sender->sendMessage("§cError, must be in game");
+                    $sender->sendMessage($prefix . "§cError, must be in game");
+                    return false;
+                }
+
+                $currentTime = time();
+                if (isset($this->cooldowns[$player->getName()]) && $this->cooldowns[$player->getName()] > $currentTime) {
+                    $remainingTime = $this->cooldowns[$player->getName()] - $currentTime;
+                    $sender->sendMessage($prefix . "§cError: still in timeout. Remaining time: " . $remainingTime . " seconds.");
+                    return false;
+                }
+
+                if ($item !== null) { 
+                    $bc = $prefix . $player->getName() . " has got: §r" . $item->getName();  
+                    $this->getServer()->broadcastMessage($bc);
+                    $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
+                }
+                
+                return true;
+            case "itembrag":
+            $cooldown = $this->getConfig()->get("Cooldown");
+                $prefix = $this->getConfig()->get("Prefix");
+                $player = $this->getServer()->getPlayerExact($sender->getName());
+                $item = $player->getInventory()->getItemInHand();
+
+
+                if (!$sender instanceof Player) {
+                    $sender->sendMessage($prefix . "§cError, must be in game");
                     return false;
                 }
                 
@@ -58,9 +101,15 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 $player_name = $player->getName();
                 
                 $currentTime = time();
+
                 if (isset($this->cooldowns[$player_name]) && $this->cooldowns[$player_name] > $currentTime && !$sender->hasPermission("easybrag.cooldown_bypass")) {
                     $remainingTime = $this->cooldowns[$player_name] - $currentTime;
                     $sender->sendMessage($this->prefix . " " . str_replace('{seconds}', $remainingTime, $this->cooldown_message));
+
+                if (isset($this->cooldowns[$player->getName()]) && $this->cooldowns[$player->getName()] > $currentTime) {
+                    $remainingTime = $this->cooldowns[$player->getName()] - $currentTime;
+                    $sender->sendMessage($prefix . "§cError: still in timeout. Remaining time: " . $remainingTime . " seconds.");
+
                     return false;
                 }
 
@@ -68,6 +117,7 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 $item_name = $item->getName();
                 $player_displayname = $player->getDisplayName();
                 
+
                 if ($item !== null && $item_name != "Air") {
                     if ($item->hasEnchantments()) {
                         $bc = $this->prefix . " " . str_replace(array('{player}', '{user}', '{username}', '{name}'), $player_displayname, $this->message_enchants);
@@ -123,8 +173,8 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         $sender->sendMessage($this->prefix . " " . $this->noperm);
         return false;
     }
-    
         }
+        
         return false;
         
     }

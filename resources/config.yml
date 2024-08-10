@@ -1,3 +1,4 @@
+
 Prefix: '&l&d[&6Easy&gBrag&d]&r'
 Cooldown: 60 # in seconds not ticks
 
@@ -12,3 +13,4 @@ Enable: '&aEnabled Brag'
 
 # Status = true. if false. brag is disabled
 Status: true
+
