@@ -47,45 +47,6 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
         switch ($command->getName()) {
             case "brag":
-
-            if ($this->status === true) {
-
-                $cooldown = $this->getConfig()->get("Cooldown");
-                /*
-            
-		if($this->hasEnchantments()){
-			$ench = new ListTag();
-			foreach($this->getEnchantments() as $enchantmentInstance){
-				$ench->push(CompoundTag::create()
-					->setShort("id", EnchantmentIdMap::getInstance()->toId($enchantmentInstance->getType()))
-					->setShort("lvl", $enchantmentInstance->getLevel())
-				);
-
-                */
-                $prefix = $this->getConfig()->get("Prefix");
-                $player = $this->getServer()->getPlayerExact($sender->getName());
-                $item = $player->getInventory()->getItemInHand();
-   
-                if (!$sender instanceof Player) {
-                    $sender->sendMessage($prefix . "§cError, must be in game");
-                    return false;
-                }
-
-                $currentTime = time();
-                if (isset($this->cooldowns[$player->getName()]) && $this->cooldowns[$player->getName()] > $currentTime) {
-                    $remainingTime = $this->cooldowns[$player->getName()] - $currentTime;
-                    $sender->sendMessage($prefix . "§cError: still in timeout. Remaining time: " . $remainingTime . " seconds.");
-                    return false;
-                }
-
-                if ($item !== null) { 
-                    $bc = $prefix . $player->getName() . " has got: §r" . $item->getName();  
-                    $this->getServer()->broadcastMessage($bc);
-                    $this->cooldowns[$player->getName()] = $currentTime + $cooldown;
-                }
-                
-                return true;
-            case "itembrag":
             $cooldown = $this->getConfig()->get("Cooldown");
                 $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
