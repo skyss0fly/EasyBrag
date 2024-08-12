@@ -112,26 +112,26 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
                         switch ($commmand->getName()) {
                             case "bragadmin":
                             if (!$sender instanceof Player) {
-$sender->sendMessage(TEXTFORMAT::RED . "ERROR: Must be in game");
+                                $sender->sendMessage(TEXTFORMAT::RED . "ERROR: Must be in game");
                             }
                             else {
-if ($player->hasPermission("easybrag.administrator") {
-if ($this->status === true) {
-$this->status = false;
-    $sender->sendMessage($this->prefix . " " . $this->disable);
-return true;                             
-    }
-                            else {
-$this->status = true;
-    $sender->sendMessage($this->prefix . " " . $this->enable);
-                                return true;
-                            }
-                            else {
-                            $sender->sendMessage($this->prefix   " " . $this->noperm);
-                                return false;
+                                if ($player->hasPermission("easybrag.administrator") {
+                                    if ($this->status === true) {
+                                    $this->status = false;
+                                    $sender->sendMessage($this->prefix . " " . $this->disable);
+                                    return true;                             
+                                else {
+                                    $this->status = true;
+                                    $sender->sendMessage($this->prefix . " " . $this->enable);
+                                    return true;
+                                }
+                                else {
+                                    $sender->sendMessage($this->prefix   " " . $this->noperm);
+                                    return false;
+                                }
                             }
                         }
-        }
-        return false;
+                        return false;
+                    }
     }
 }
