@@ -52,13 +52,12 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $item = $player->getInventory()->getItemInHand();
 
-
                 if (!$sender instanceof Player) {
-                    $sender->sendMessage($prefix . "§cError, must be in game");
-                    throw new Exception;
+                    $sender->sendMessage($prefix . TEXTFORMAT::RED . "Error, must be in game");
                     return false;
                 }
-                
+                else {
+                if ($this->disabled === true) {
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $player_name = $player->getName();
                 
@@ -113,11 +112,13 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                     $sender->sendMessage($this->prefix . " " . $this->invalid_item_message);
                 }  
         } 
+                }              
+
         else {
 $sender->sendMessage($this->prefix . " " . $this->disabled);
             
         }
-    
+    switch ($command->getName()) {
   case "bragadmin":
             $player = $this->getServer()->getPlayerExact($sender->getName());
             
@@ -138,6 +139,6 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         }
         
         return false;
-        
+        }
     }
 }
