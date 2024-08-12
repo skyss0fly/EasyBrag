@@ -141,9 +141,9 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         $sender->sendMessage($this->prefix . " " . $this->noperm);
         return false;
     }
-       return true;
+    return true;
     }
-        
+     return true;   
     }
 }
 
