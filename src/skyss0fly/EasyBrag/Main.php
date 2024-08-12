@@ -121,17 +121,13 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                     $this->cooldowns[$player_name] = $currentTime + $this->cooldown;
                 } else {
                     $sender->sendMessage($this->prefix . " " . $this->invalid_item_message);
-                }  
-        } 
-                }              
-
+                }
+                }
                 }
                     return true;
                 }
         }
-
-                
-    switch ($command->getName()) {
+switch ($command->getName()) {
   case "bragadmin":
             $player = $this->getServer()->getPlayerExact($sender->getName());
             if (!$sender instanceof Player) {
@@ -156,8 +152,10 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
     }
 }
      return true;   
+    }
 }
 }
+
 
     
     
