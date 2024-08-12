@@ -109,6 +109,7 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                             case "bragadmin":
                             if (!$sender instanceof Player) {
                                 $sender->sendMessage(TEXTFORMAT::RED . "ERROR: Must be in game");
+                                return false;
                             }
                             else {
                                 if ($player->hasPermission("easybrag.administrator") {
