@@ -50,10 +50,10 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                     switch ($command->getName()) {
             case "brag":
                 if (!$sender instanceof Player) {
-                    $sender->sendMessage("§cError, must be in game");
+                    $sender->sendMessage(TEXTFORMAT::RED . "Error, must be in game");
                     return false;
                 }
-                
+                if ($this->status === true) {
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $player_name = $player->getName();
                 
@@ -100,8 +100,37 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 } else {
                     $sender->sendMessage($this->prefix . " " . $this->invalid_item_message);
                 }
-                
+
+                }
+                else {
+
+$sender->sendMessage($this->prefix . " " . $this->disabled);
+
                 return true;
+ }             
+
+                        switch ($commmand->getName()) {
+                            case "bragadmin":
+                            if (!$sender instanceof Player) {
+$sender->sendMessage(TEXTFORMAT::RED . "ERROR: Must be in game");
+                            }
+                            else {
+if ($player->hasPermission("easybrag.administrator") {
+if ($this->status === true) {
+$this->status = false;
+    $sender->sendMessage($this->prefix . " " . $this->disable);
+return true;                             
+    }
+                            else {
+$this->status = true;
+    $sender->sendMessage($this->prefix . " " . $this->enable);
+                                return true;
+                            }
+                            else {
+                            $sender->sendMessage($this->prefix   " " . $this->noperm);
+                                return false;
+                            }
+                        }
         }
         return false;
     }
