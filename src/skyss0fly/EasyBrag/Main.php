@@ -50,17 +50,17 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
             $cooldown = $this->getConfig()->get("Cooldown");
                 $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
-                $item = $player->getInventory()->getItemInHand();
-
-                if (!$sender instanceof Player) {
+                     if (!$sender instanceof Player) {
                     $sender->sendMessage($prefix . TEXTFORMAT::RED . "Error, must be in game");
                     return false;
                 }
                 else {
-                if ($this->disabled === true) {
+                if ($this->disabled !== true) {
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $player_name = $player->getName();
-                
+                $item = $player->getInventory()->getItemInHand();
+
+           
                 $currentTime = time();
 
                 if (isset($this->cooldowns[$player_name]) && $this->cooldowns[$player_name] > $currentTime && !$sender->hasPermission("easybrag.cooldown_bypass")) {
