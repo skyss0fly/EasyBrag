@@ -25,6 +25,7 @@ class Main extends PluginBase implements Listener {
     private $enable;
     private $noperm;
     private $status;
+    private $item;
     
 
     public function onLoad(): void {
@@ -35,6 +36,7 @@ class Main extends PluginBase implements Listener {
         $this->disable = TextFormat::colorize($this->getConfig()->get("DisableMessage")); 
 $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
         $this->status = $this->getConfig()->get("Status");
+$this->item = $player->getInventory()->getItemInHand();
 
             // New Update ^
         $this->prefix = TextFormat::colorize(trim($this->getConfig()->get("Prefix")));
@@ -58,8 +60,7 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 if ($this->disabled !== true) {
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $player_name = $player->getName();
-                $item = $player->getInventory()->getItemInHand();
-
+                
            
                 $currentTime = time();
 
@@ -74,13 +75,13 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                     return false;
                 }
 
-                $item = $player->getInventory()->getItemInHand();
-                $item_name = $item->getName();
+                
+                $item_name = $this->item->getName();
                 $player_displayname = $player->getDisplayName();
                 
 
-                if ($item !== null && $item_name != "Air") {
-                    if ($item->hasEnchantments()) {
+                if ($this->item !== null && $item_name != "Air") {
+                    if ($this->item->hasEnchantments()) {
                         $bc = $this->prefix . " " . str_replace(array('{player}', '{user}', '{username}', '{name}'), $player_displayname, $this->message_enchants);
                         
                         $enchantment_names = array_map(function(EnchantmentInstance $enchantment) : string{
@@ -90,11 +91,11 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                             } else {
                                 return $this->getServer()->getLanguage()->translateString($ench_name->getText());
                             }
-                        }, $item->getEnchantments());
+                        }, $this->tem->getEnchantments());
 
                         $enchantment_levels = array_map(function(EnchantmentInstance $enchantment) : int{
                             return $enchantment->getLevel();
-                        }, $item->getEnchantments());
+                        }, $this->item->getEnchantments());
                         
                         $enchantment_list = "";
                         foreach ($enchantment_names as $index => $ench_name) {
