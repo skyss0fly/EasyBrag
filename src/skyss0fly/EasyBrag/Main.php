@@ -55,6 +55,7 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
 
                 if (!$sender instanceof Player) {
                     $sender->sendMessage($prefix . "§cError, must be in game");
+                    throw new Exception;
                     return false;
                 }
                 
