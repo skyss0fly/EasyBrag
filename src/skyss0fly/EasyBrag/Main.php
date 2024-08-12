@@ -118,6 +118,11 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
 $sender->sendMessage($this->prefix . " " . $this->disabled);
             
         }
+                    return true;
+                }
+        }
+
+                
     switch ($command->getName()) {
   case "bragadmin":
             $player = $this->getServer()->getPlayerExact($sender->getName());
@@ -136,10 +141,19 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         $sender->sendMessage($this->prefix . " " . $this->noperm);
         return false;
     }
-        }
+       return true;
+    }
         
-        return false;
-                }
-        }
     }
 }
+
+    
+    
+    
+    
+
+
+                
+        
+    
+
