@@ -53,11 +53,20 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 $prefix = $this->getConfig()->get("Prefix");
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                      if (!$sender instanceof Player) {
+                     
+                     
+
+                     
                     $sender->sendMessage($prefix . TEXTFORMAT::RED . "Error, must be in game");
                     return false;
                 }
                 else {
-                if ($this->disabled !== true) {
+                if ($this->disabled === true) {
+                    $sender->sendMessage($this->prefix . " " . $this->disabled);
+                }
+                else {
+
+
                     $item = $player->getInventory()->getItemInHand();
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $player_name = $player->getName();
@@ -116,10 +125,7 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
         } 
                 }              
 
-        else {
-$sender->sendMessage($this->prefix . " " . $this->disabled);
-            
-        }
+                }
                     return true;
                 }
         }
@@ -128,7 +134,11 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
     switch ($command->getName()) {
   case "bragadmin":
             $player = $this->getServer()->getPlayerExact($sender->getName());
-            
+            if (!$sender instanceof Player) {
+
+                $sender->sendMessage("Error; you must be ingame");
+            }
+            else {
     if ($player->hasPermission("easybrag.administrator")) {
         if ($this->status === true) {
             $this->status = false;
@@ -144,8 +154,9 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         return false;
     }
     }
+}
      return true;   
-    }
+}
 }
 
     
