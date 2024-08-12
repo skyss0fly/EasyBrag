@@ -10,7 +10,7 @@ permissions:
   easybrag.cooldown_bypass:
     default: op
   easybrag.administrator:
-    default: false
+    default: op
 commands:
   brag:
     description: brag the item you have in your hand!
@@ -19,8 +19,7 @@ commands:
   bragadmin:
     description: disable/enable brag
     permission: easybrag.administrator
-    default: false
-  
+    default: op  
     
 
 
