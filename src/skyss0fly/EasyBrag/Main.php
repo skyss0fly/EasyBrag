@@ -127,8 +127,8 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                     return true;
                 }
         }
-switch ($command->getName()) {
-  case "bragadmin":
+        switch ($command->getName()) {
+         case "bragadmin":
             $player = $this->getServer()->getPlayerExact($sender->getName());
             if (!$sender instanceof Player) {
 
@@ -149,8 +149,10 @@ switch ($command->getName()) {
         $sender->sendMessage($this->prefix . " " . $this->noperm);
         return false;
     }
+            }
+            return true;
+        }
+        return true;
     }
 }
-     return true;   
-    }
-}
+
