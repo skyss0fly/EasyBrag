@@ -47,49 +47,27 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
         $this->message_enchants = TextFormat::colorize($this->getConfig()->get("MessageWithEnchants"));
     }
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
-        switch ($command->getName()) {
+                    switch ($command->getName()) {
             case "brag":
-            $cooldown = $this->getConfig()->get("Cooldown");
-                $prefix = $this->getConfig()->get("Prefix");
-                $player = $this->getServer()->getPlayerExact($sender->getName());
-                     if (!$sender instanceof Player) {
-                     
-                     
-
-                     
-                    $sender->sendMessage($prefix . TEXTFORMAT::RED . "Error, must be in game");
+                if (!$sender instanceof Player) {
+                    $sender->sendMessage("§cError, must be in game");
                     return false;
                 }
-                else {
-                if ($this->disabled === true) {
-                    $sender->sendMessage($this->prefix . " " . $this->disabled);
-                }
-                else {
-
-
-                    $item = $player->getInventory()->getItemInHand();
+                
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $player_name = $player->getName();
                 
-           
                 $currentTime = time();
-
                 if (isset($this->cooldowns[$player_name]) && $this->cooldowns[$player_name] > $currentTime && !$sender->hasPermission("easybrag.cooldown_bypass")) {
                     $remainingTime = $this->cooldowns[$player_name] - $currentTime;
                     $sender->sendMessage($this->prefix . " " . str_replace('{seconds}', $remainingTime, $this->cooldown_message));
-
-                if (isset($this->cooldowns[$player->getName()]) && $this->cooldowns[$player->getName()] > $currentTime) {
-                    $remainingTime = $this->cooldowns[$player->getName()] - $currentTime;
-                    $sender->sendMessage($prefix . "§cError: still in timeout. Remaining time: " . $remainingTime . " seconds.");
-
                     return false;
                 }
 
-                
+                $item = $player->getInventory()->getItemInHand();
                 $item_name = $item->getName();
                 $player_displayname = $player->getDisplayName();
                 
-
                 if ($item !== null && $item_name != "Air") {
                     if ($item->hasEnchantments()) {
                         $bc = $this->prefix . " " . str_replace(array('{player}', '{user}', '{username}', '{name}'), $player_displayname, $this->message_enchants);
@@ -122,37 +100,9 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 } else {
                     $sender->sendMessage($this->prefix . " " . $this->invalid_item_message);
                 }
-                }
-                }
-                    return true;
-                }
+                
+                return true;
         }
-        switch ($command->getName()) {
-         case "bragadmin":
-            $player = $this->getServer()->getPlayerExact($sender->getName());
-            if (!$sender instanceof Player) {
-
-                $sender->sendMessage("Error; you must be ingame");
-            }
-            else {
-    if ($player->hasPermission("easybrag.administrator")) {
-        if ($this->status === true) {
-            $this->status = false;
-            $sender->sendMessage($this->prefix . " " . $this->disable);
-            return true;
-        } else {
-            $this->status = true;
-            $sender->sendMessage($this->prefix . " " . $this->enable);
-            return true;
-        }
-    } else {
-        $sender->sendMessage($this->prefix . " " . $this->noperm);
         return false;
     }
-            }
-            return true;
-        }
-        return true;
-    }
 }
-
