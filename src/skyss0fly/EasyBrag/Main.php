@@ -100,15 +100,11 @@ $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
                 } else {
                     $sender->sendMessage($this->prefix . " " . $this->invalid_item_message);
                 }
-
                 }
                 else {
-
-$sender->sendMessage($this->prefix . " " . $this->disabled);
-
-                return true;
- }             
-
+                    $sender->sendMessage($this->prefix . " " . $this->disabled);
+                    return true;
+                }
                         switch ($commmand->getName()) {
                             case "bragadmin":
                             if (!$sender instanceof Player) {
@@ -125,13 +121,14 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
                                     $sender->sendMessage($this->prefix . " " . $this->enable);
                                     return true;
                                 }
-                                else {
-                                    $sender->sendMessage($this->prefix   " " . $this->noperm);
-                                    return false;
-                                }
+                            else {
+                                $sender->sendMessage($this->prefix   " " . $this->noperm);
+                                return false;
+                            }
                             }
                         }
                         return false;
                     }
     }
 }
+
