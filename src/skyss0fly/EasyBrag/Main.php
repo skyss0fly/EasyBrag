@@ -139,6 +139,7 @@ $sender->sendMessage($this->prefix . " " . $this->disabled);
         }
         
         return false;
+                }
         }
     }
 }
