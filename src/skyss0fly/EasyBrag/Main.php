@@ -25,7 +25,7 @@ class Main extends PluginBase implements Listener {
     private $enable;
     private $noperm;
     private $status;
-    private $item;
+    
     
 
     public function onLoad(): void {
@@ -36,7 +36,7 @@ class Main extends PluginBase implements Listener {
         $this->disable = TextFormat::colorize($this->getConfig()->get("DisableMessage")); 
 $this->enable = TextFormat::colorize($this->getConfig()->get("EnableMessage"));
         $this->status = $this->getConfig()->get("Status");
-$this->item = $player->getInventory()->getItemInHand();
+
 
             // New Update ^
         $this->prefix = TextFormat::colorize(trim($this->getConfig()->get("Prefix")));
@@ -58,6 +58,7 @@ $this->item = $player->getInventory()->getItemInHand();
                 }
                 else {
                 if ($this->disabled !== true) {
+                    $item = $player->getInventory()->getItemInHand();
                 $player = $this->getServer()->getPlayerExact($sender->getName());
                 $player_name = $player->getName();
                 
@@ -76,12 +77,12 @@ $this->item = $player->getInventory()->getItemInHand();
                 }
 
                 
-                $item_name = $this->item->getName();
+                $item_name = $item->getName();
                 $player_displayname = $player->getDisplayName();
                 
 
-                if ($this->item !== null && $item_name != "Air") {
-                    if ($this->item->hasEnchantments()) {
+                if ($item !== null && $item_name != "Air") {
+                    if ($item->hasEnchantments()) {
                         $bc = $this->prefix . " " . str_replace(array('{player}', '{user}', '{username}', '{name}'), $player_displayname, $this->message_enchants);
                         
                         $enchantment_names = array_map(function(EnchantmentInstance $enchantment) : string{
@@ -91,11 +92,11 @@ $this->item = $player->getInventory()->getItemInHand();
                             } else {
                                 return $this->getServer()->getLanguage()->translateString($ench_name->getText());
                             }
-                        }, $this->tem->getEnchantments());
+                        }, $item->getEnchantments());
 
                         $enchantment_levels = array_map(function(EnchantmentInstance $enchantment) : int{
                             return $enchantment->getLevel();
-                        }, $this->item->getEnchantments());
+                        }, $item->getEnchantments());
                         
                         $enchantment_list = "";
                         foreach ($enchantment_names as $index => $ench_name) {
